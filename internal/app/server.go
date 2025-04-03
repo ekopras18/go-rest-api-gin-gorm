@@ -9,6 +9,7 @@ import (
 
 func RunServer() {
 	database.InitDB()
+	database.InitRedis()
 
 	// Set Gin mode
 	gin.SetMode(gin.ReleaseMode)

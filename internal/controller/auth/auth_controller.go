@@ -7,19 +7,31 @@ import (
 	"net/http"
 )
 
-var authService = auth.AuthService{}
+var authService = auth.Service{}
 
 func LoginHandler(c *gin.Context) {
-	var creds utils.Credentials
-	if err := c.BindJSON(&creds); err != nil {
+	var creeds utils.Credentials
+	if err := c.BindJSON(&creeds); err != nil {
 		utils.Response(c, http.StatusBadRequest, "Invalid request", nil)
 		return
 	}
-	token, err := authService.Login(creds)
+	token, err := authService.Login(creeds)
 	if err != nil {
 		utils.Response(c, http.StatusUnauthorized, "Invalid credentials", nil)
 		return
 	}
 
 	utils.Response(c, http.StatusOK, "Token generated", gin.H{"token": token})
+}
+
+func LogoutHandler(c *gin.Context) {
+	tokenString := c.GetHeader("Authorization")
+	if tokenString == "" {
+		utils.Response(c, http.StatusBadRequest, "Missing token", nil)
+		return
+	}
+
+	utils.BlacklistToken(tokenString)
+
+	utils.Response(c, http.StatusOK, "Successfully logged out", nil)
 }

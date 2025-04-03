@@ -46,6 +46,7 @@ func Routes(r *gin.Engine) {
 	routesAuth := r.Group("/auth")
 	routesAuth.POST("/register", register)
 	routesAuth.POST("/login", auth.LoginHandler)
+	routesAuth.POST("/logout", auth.LogoutHandler)
 
 	routes := r.Group("/api/v1")
 	routes.Use(AuthMiddleware())

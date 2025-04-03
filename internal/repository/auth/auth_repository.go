@@ -5,9 +5,9 @@ import (
 	"go-rest-api-gin-gorm/internal/models"
 )
 
-type AuthRepository struct{}
+type Repository struct{}
 
-func (r *AuthRepository) GetUserByUsername(username string) (models.User, error) {
+func (r *Repository) GetUserByUsername(username string) (models.User, error) {
 	var user models.User
 	err := database.Db.Where("username = ?", username).First(&user).Error
 	return user, err

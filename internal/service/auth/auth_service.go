@@ -9,17 +9,17 @@ import (
 	"time"
 )
 
-type AuthService struct {
-	repo auth.AuthRepository
+type Service struct {
+	repo auth.Repository
 }
 
-func (s *AuthService) Login(creds utils.Credentials) (string, error) {
+func (s *Service) Login(creds utils.Credentials) (string, error) {
 	user, err := s.repo.GetUserByUsername(creds.Username)
 	if err != nil || user.ID == 0 {
 		return "", errors.New("invalid credentials")
 	}
 
-	expirationTime := time.Now().Add(30 * time.Minute)
+	expirationTime := time.Now().Add(5 * time.Minute)
 	claims := &utils.Claims{
 		Username: creds.Username,
 		RegisteredClaims: jwt.RegisteredClaims{

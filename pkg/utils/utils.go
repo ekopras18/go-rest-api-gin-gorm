@@ -1,9 +1,11 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
+	"go-rest-api-gin-gorm/internal/database"
 	"golang.org/x/crypto/bcrypt"
 	"log"
 	"net/http"
@@ -82,4 +84,18 @@ func Logger(r *gin.Engine) {
 			)
 		},
 	}))
+}
+
+func BlacklistToken(token string) {
+	ctx := context.Background()
+	err := database.RedisClient.Set(ctx, "blacklist:"+token, true, 24*time.Hour).Err()
+	if err != nil {
+		return
+	}
+}
+
+func IsTokenBlacklisted(token string) bool {
+	ctx := context.Background()
+	val, err := database.RedisClient.Get(ctx, "blacklist:"+token).Result()
+	return err == nil && val == "1"
 }
