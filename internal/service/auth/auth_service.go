@@ -13,15 +13,15 @@ type Service struct {
 	repo auth.Repository
 }
 
-func (s *Service) Login(creds utils.Credentials) (string, error) {
-	user, err := s.repo.GetUserByUsername(creds.Username)
+func (s *Service) Login(credential utils.Credentials) (string, error) {
+	user, err := s.repo.GetUserByUsername(credential.Username)
 	if err != nil || user.ID == 0 {
 		return "", errors.New("invalid credentials")
 	}
 
 	expirationTime := time.Now().Add(5 * time.Minute)
 	claims := &utils.Claims{
-		Username: creds.Username,
+		Username: credential.Username,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(expirationTime),
 		},

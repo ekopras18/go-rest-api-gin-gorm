@@ -10,12 +10,12 @@ import (
 var authService = auth.Service{}
 
 func LoginHandler(c *gin.Context) {
-	var creeds utils.Credentials
-	if err := c.BindJSON(&creeds); err != nil {
+	var credential utils.Credentials
+	if err := c.BindJSON(&credential); err != nil {
 		utils.Response(c, http.StatusBadRequest, "Invalid request", nil)
 		return
 	}
-	token, err := authService.Login(creeds)
+	token, err := authService.Login(credential)
 	if err != nil {
 		utils.Response(c, http.StatusUnauthorized, "Invalid credentials", nil)
 		return

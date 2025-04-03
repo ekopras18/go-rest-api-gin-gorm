@@ -26,7 +26,6 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		// Periksa apakah token sudah di-blacklist
 		if utils.IsTokenBlacklisted(tokenString) {
 			utils.Response(c, http.StatusUnauthorized, "Token is expired", nil)
 			c.Abort()
