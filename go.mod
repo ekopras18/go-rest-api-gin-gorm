@@ -1,4 +1,4 @@
-module rest-api-gin-gorm
+module go-rest-api-gin-gorm
 
 go 1.24.1
 

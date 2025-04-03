@@ -2,9 +2,9 @@ package auth
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-rest-api-gin-gorm/internal/service/auth"
+	"go-rest-api-gin-gorm/pkg/utils"
 	"net/http"
-	"rest-api-gin-gorm/internal/service/auth"
-	"rest-api-gin-gorm/pkg/utils"
 )
 
 var authService = auth.AuthService{}

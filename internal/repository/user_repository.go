@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"rest-api-gin-gorm/internal/database"
-	"rest-api-gin-gorm/internal/entities"
+	"go-rest-api-gin-gorm/internal/database"
+	"go-rest-api-gin-gorm/internal/entities"
 )
 
 type UserRepository struct{}

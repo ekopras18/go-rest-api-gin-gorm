@@ -1,8 +1,8 @@
 package main
 
 import (
-	"rest-api-gin-gorm/config"
-	"rest-api-gin-gorm/internal/app"
+	"go-rest-api-gin-gorm/config"
+	"go-rest-api-gin-gorm/internal/app"
 )
 
 func main() {

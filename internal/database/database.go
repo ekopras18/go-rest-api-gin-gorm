@@ -2,11 +2,11 @@ package database
 
 import (
 	"fmt"
+	"go-rest-api-gin-gorm/config"
+	"go-rest-api-gin-gorm/internal/entities"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
-	"rest-api-gin-gorm/config"
-	"rest-api-gin-gorm/internal/entities"
 )
 
 var Db *gorm.DB

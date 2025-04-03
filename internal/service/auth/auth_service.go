@@ -3,9 +3,9 @@ package auth
 import (
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
-	"rest-api-gin-gorm/config"
-	"rest-api-gin-gorm/internal/repository/auth"
-	"rest-api-gin-gorm/pkg/utils"
+	"go-rest-api-gin-gorm/config"
+	"go-rest-api-gin-gorm/internal/repository/auth"
+	"go-rest-api-gin-gorm/pkg/utils"
 	"time"
 )
 

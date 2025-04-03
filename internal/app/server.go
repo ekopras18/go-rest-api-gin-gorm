@@ -2,9 +2,9 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-rest-api-gin-gorm/internal/database"
+	"go-rest-api-gin-gorm/pkg/utils"
 	"log"
-	"rest-api-gin-gorm/internal/database"
-	"rest-api-gin-gorm/pkg/utils"
 )
 
 func RunServer() {

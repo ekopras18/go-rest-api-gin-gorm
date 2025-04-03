@@ -2,9 +2,9 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-rest-api-gin-gorm/internal/service"
+	"go-rest-api-gin-gorm/pkg/utils"
 	"net/http"
-	"rest-api-gin-gorm/internal/service"
-	"rest-api-gin-gorm/pkg/utils"
 )
 
 var userService = service.UserService{}

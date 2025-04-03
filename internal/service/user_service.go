@@ -1,8 +1,8 @@
 package service
 
 import (
-	"rest-api-gin-gorm/internal/entities"
-	"rest-api-gin-gorm/internal/repository"
+	"go-rest-api-gin-gorm/internal/entities"
+	"go-rest-api-gin-gorm/internal/repository"
 )
 
 type UserService struct {

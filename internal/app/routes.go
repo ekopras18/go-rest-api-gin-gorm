@@ -2,12 +2,12 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-rest-api-gin-gorm/internal/controller"
+	"go-rest-api-gin-gorm/internal/controller/auth"
+	"go-rest-api-gin-gorm/internal/database"
+	"go-rest-api-gin-gorm/internal/entities"
+	"go-rest-api-gin-gorm/pkg/utils"
 	"net/http"
-	"rest-api-gin-gorm/internal/controller"
-	"rest-api-gin-gorm/internal/controller/auth"
-	"rest-api-gin-gorm/internal/database"
-	"rest-api-gin-gorm/internal/entities"
-	"rest-api-gin-gorm/pkg/utils"
 	"time"
 )
 
