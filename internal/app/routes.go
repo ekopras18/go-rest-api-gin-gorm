@@ -5,7 +5,7 @@ import (
 	"go-rest-api-gin-gorm/internal/controller"
 	"go-rest-api-gin-gorm/internal/controller/auth"
 	"go-rest-api-gin-gorm/internal/database"
-	"go-rest-api-gin-gorm/internal/entities"
+	"go-rest-api-gin-gorm/internal/models"
 	"go-rest-api-gin-gorm/pkg/utils"
 	"net/http"
 	"time"
@@ -18,7 +18,7 @@ func register(c *gin.Context) {
 		return
 	}
 
-	var existingUser entities.User
+	var existingUser models.User
 	if err := database.Db.Where("username = ?", creds.Username).First(&existingUser).Error; err == nil && existingUser.ID != 0 {
 		utils.Response(c, http.StatusConflict, "Username already exists", nil)
 		return
@@ -30,7 +30,7 @@ func register(c *gin.Context) {
 		return
 	}
 
-	user := entities.User{Username: creds.Username, Password: hashedPassword, CreatedAt: time.Now()}
+	user := models.User{Username: creds.Username, Password: hashedPassword, CreatedAt: time.Now()}
 	if err := database.Db.Create(&user).Error; err != nil {
 		utils.Response(c, http.StatusInternalServerError, "Could not create user", nil)
 		return

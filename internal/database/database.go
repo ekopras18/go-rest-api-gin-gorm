@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 	"go-rest-api-gin-gorm/config"
-	"go-rest-api-gin-gorm/internal/entities"
+	"go-rest-api-gin-gorm/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
@@ -35,7 +35,7 @@ func InitDB() {
 	}
 
 	// Run migrations
-	if err := Db.AutoMigrate(&entities.User{}); err != nil {
+	if err := Db.AutoMigrate(&models.User{}); err != nil {
 		log.Fatalf("Failed to migrate database: %v", err)
 	}
 
