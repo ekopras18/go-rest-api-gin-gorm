@@ -35,3 +35,16 @@ func LogoutHandler(c *gin.Context) {
 
 	utils.Response(c, http.StatusOK, "Successfully logged out", nil)
 }
+
+func RegisterHandler(c *gin.Context) {
+	var credential utils.Credentials
+	if err := c.BindJSON(&credential); err != nil {
+		utils.Response(c, http.StatusBadRequest, "Invalid request", nil)
+		return
+	}
+	if err := authService.Register(credential); err != nil {
+		utils.Response(c, http.StatusConflict, err.Error(), nil)
+		return
+	}
+	utils.Response(c, http.StatusCreated, "User registered", nil)
+}

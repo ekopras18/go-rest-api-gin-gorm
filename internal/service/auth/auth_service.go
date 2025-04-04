@@ -33,3 +33,14 @@ func (s *Service) Login(credential utils.Credentials) (string, error) {
 	}
 	return tokenString, nil
 }
+
+func (s *Service) Register(credential utils.Credentials) error {
+	if s.repo.IsUsernameTaken(credential.Username) {
+		return errors.New("username already exists")
+	}
+	hashedPassword, err := utils.HashPassword(credential.Password)
+	if err != nil {
+		return errors.New("error hashing password")
+	}
+	return s.repo.RegisterUserRepository(credential.Username, hashedPassword)
+}
