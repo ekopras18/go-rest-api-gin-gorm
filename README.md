@@ -3,7 +3,7 @@
 - [x] CRUD
 - [x] Auth JWT
 - [x] Middleware
-- [ ] Rate Limiter
+- [x] Rate Limiter
 - [x] CORS
 - [ ] Docker
 

@@ -12,6 +12,7 @@ import (
 
 func Routes(r *gin.Engine) {
 	r.Use(CORSMiddleware())
+	r.Use(RateLimiter())
 	r.NoRoute(utils.NotFoundHandler)
 
 	r.GET("/docs/*any", ginSwagger.WrapHandler(filesSwagger.Handler))

@@ -1,5 +1,12 @@
 # Release Notes
 
+## [v0.1.4](#) - 2025-04-06
+### Added
+- Rate limiting for API endpoints.
+### Changed
+- removed unused functions.
+### Fixed
+
 ## [v0.1.3](#) - 2025-04-05
 ### Added
 - Swagger UI for API documentation.

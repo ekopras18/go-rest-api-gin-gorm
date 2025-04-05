@@ -20,10 +20,6 @@ func HashPassword(password string) (string, error) {
 	return string(hashedPassword), nil
 }
 
-func CheckPasswordHash(password, hash string) bool {
-	return bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) == nil
-}
-
 type ResponseMessage200 struct {
 	Status  int    `json:"status" example:"200"`
 	Message string `json:"message" example:"success"`
@@ -61,14 +57,6 @@ func Response(c *gin.Context, statusCode int, message string, data interface{}) 
 	}
 
 	c.JSON(statusCode, response)
-}
-
-func CustomErrorHandler(c *gin.Context) {
-	c.Next()
-	println(len(c.Errors))
-	if len(c.Errors) > 0 {
-		Response(c, http.StatusInternalServerError, "Internal Server Error", nil)
-	}
 }
 
 func NotFoundHandler(c *gin.Context) {

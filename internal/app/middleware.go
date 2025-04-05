@@ -6,6 +6,10 @@ import (
 	"github.com/ekopras18/go-rest-api-gin-gorm/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/ulule/limiter/v3"
+	ginlimiter "github.com/ulule/limiter/v3/drivers/middleware/gin"
+	"github.com/ulule/limiter/v3/drivers/store/memory"
+	"log"
 	"net/http"
 )
 
@@ -50,4 +54,19 @@ func CORSMiddleware() gin.HandlerFunc {
 
 		c.Next()
 	}
+}
+
+func RateLimiter() gin.HandlerFunc {
+	rate, err := limiter.NewRateFromFormatted("60-M")
+	if err != nil {
+		log.Println("Error creating rate limiter:", err)
+	}
+
+	store := memory.NewStore()
+	limiterInstance := limiter.New(store, rate)
+
+	middleware := ginlimiter.NewMiddleware(limiterInstance, ginlimiter.WithLimitReachedHandler(func(c *gin.Context) {
+		utils.Response(c, http.StatusTooManyRequests, "You have reached the maximum number of requests per minute.", nil)
+	}))
+	return middleware
 }

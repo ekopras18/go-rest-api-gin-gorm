@@ -6,7 +6,7 @@ import (
 )
 
 // @title REST API with Gin and Gorm
-// @version 0.1.3
+// @version 0.1.4
 // @description This is a REST API using Gin and Gorm.
 // @schemes http https
 
