@@ -3,25 +3,14 @@ package utils
 import (
 	"context"
 	"fmt"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/database"
 	"github.com/gin-gonic/gin"
-	"github.com/golang-jwt/jwt/v5"
-	"go-rest-api-gin-gorm/internal/database"
 	"golang.org/x/crypto/bcrypt"
 	"log"
 	"net/http"
 	"os"
 	"time"
 )
-
-type Claims struct {
-	Username string `json:"username"`
-	jwt.RegisteredClaims
-}
-
-type Credentials struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
 
 func HashPassword(password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
@@ -33,6 +22,31 @@ func HashPassword(password string) (string, error) {
 
 func CheckPasswordHash(password, hash string) bool {
 	return bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) == nil
+}
+
+type ResponseMessage200 struct {
+	Status  int    `json:"status" example:"200"`
+	Message string `json:"message" example:"success"`
+}
+
+type ResponseMessage201 struct {
+	Status  int    `json:"status" example:"201"`
+	Message string `json:"message" example:"success"`
+}
+
+type ResponseMessage400 struct {
+	Status  int    `json:"status" example:"400"`
+	Message string `json:"message" example:"Bad Request"`
+}
+
+type ResponseMessage404 struct {
+	Status  int    `json:"status" example:"404"`
+	Message string `json:"message" example:"not found"`
+}
+
+type ResponseMessage409 struct {
+	Status  int    `json:"status" example:"409"`
+	Message string `json:"message" example:"Conflict"`
 }
 
 func Response(c *gin.Context, statusCode int, message string, data interface{}) {

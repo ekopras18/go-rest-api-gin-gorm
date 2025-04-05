@@ -1,8 +1,17 @@
+// @title REST API with Gin and Gorm
+// @version 0.1.3
+// @description This is a REST API using Gin and Gorm.
+// @schemes http https
+
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+
 package main
 
 import (
-	"go-rest-api-gin-gorm/config"
-	"go-rest-api-gin-gorm/internal/app"
+	"github.com/ekopras18/go-rest-api-gin-gorm/config"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/app"
 )
 
 func main() {

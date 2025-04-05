@@ -1,8 +1,8 @@
 package user
 
 import (
-	"go-rest-api-gin-gorm/internal/database"
-	"go-rest-api-gin-gorm/internal/models"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/database"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/models/user"
 	"time"
 )
 

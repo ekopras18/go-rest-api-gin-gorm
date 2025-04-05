@@ -1,8 +1,8 @@
 package user
 
 import (
-	"go-rest-api-gin-gorm/internal/models"
-	"go-rest-api-gin-gorm/internal/repository/user"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/models/user"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/repository/user"
 )
 
 type Service struct {

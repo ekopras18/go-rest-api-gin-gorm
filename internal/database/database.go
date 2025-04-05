@@ -2,8 +2,8 @@ package database
 
 import (
 	"fmt"
-	"go-rest-api-gin-gorm/config"
-	"go-rest-api-gin-gorm/internal/models"
+	"github.com/ekopras18/go-rest-api-gin-gorm/config"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/models/user"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"

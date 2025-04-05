@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"go-rest-api-gin-gorm/internal/database"
-	"go-rest-api-gin-gorm/internal/models"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/database"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/models/user"
 	"time"
 )
 
@@ -17,6 +17,12 @@ func (r *Repository) GetUserByUsername(username string) (models.User, error) {
 func (r *Repository) IsUsernameTaken(username string) bool {
 	var user models.User
 	database.Db.Where("username = ?", username).First(&user)
+	return user.ID != 0
+}
+
+func (r *Repository) IsEmailTaken(email string) bool {
+	var user models.User
+	database.Db.Where("email = ?", email).First(&user)
 	return user.ID != 0
 }
 

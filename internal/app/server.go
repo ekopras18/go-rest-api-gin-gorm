@@ -1,9 +1,9 @@
 package app
 
 import (
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/database"
+	"github.com/ekopras18/go-rest-api-gin-gorm/pkg/utils"
 	"github.com/gin-gonic/gin"
-	"go-rest-api-gin-gorm/internal/database"
-	"go-rest-api-gin-gorm/pkg/utils"
 	"log"
 )
 

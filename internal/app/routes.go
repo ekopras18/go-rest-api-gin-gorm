@@ -1,14 +1,20 @@
 package app
 
 import (
+	_ "github.com/ekopras18/go-rest-api-gin-gorm/docs"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/controller/auth"
+	"github.com/ekopras18/go-rest-api-gin-gorm/internal/controller/user"
+	"github.com/ekopras18/go-rest-api-gin-gorm/pkg/utils"
 	"github.com/gin-gonic/gin"
-	"go-rest-api-gin-gorm/internal/controller/auth"
-	"go-rest-api-gin-gorm/internal/controller/user"
-	"go-rest-api-gin-gorm/pkg/utils"
+	filesSwagger "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func Routes(r *gin.Engine) {
+	r.Use(CORSMiddleware())
 	r.NoRoute(utils.NotFoundHandler)
+
+	r.GET("/docs/*any", ginSwagger.WrapHandler(filesSwagger.Handler))
 
 	// Auth routes
 	routesAuth := r.Group("/auth")

@@ -2,8 +2,8 @@ package database
 
 import (
 	"context"
+	"github.com/ekopras18/go-rest-api-gin-gorm/config"
 	"github.com/redis/go-redis/v9"
-	"go-rest-api-gin-gorm/config"
 	"log"
 	"time"
 )
