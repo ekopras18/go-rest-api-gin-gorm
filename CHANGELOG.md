@@ -1,5 +1,12 @@
 # Release Notes
 
+## [v0.1.5](#) - 2025-04-08
+### Added
+- Docker support for development and production environments.
+### Changed
+### Fixed
+- email field in registration.
+
 ## [v0.1.4](#) - 2025-04-06
 ### Added
 - Rate limiting for API endpoints.

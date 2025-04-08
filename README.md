@@ -5,7 +5,7 @@
 - [x] Middleware
 - [x] Rate Limiter
 - [x] CORS
-- [ ] Docker
+- [x] Docker (dev and prod)
 
 # Structure of the Project
 
@@ -75,7 +75,12 @@ go mod tidy
       ```bash
       air .
       ```
-      
+- Run with Docker
+    - Build the image
+      ```bash
+      docker compose up -d --build
+      ```
+    * <i>db masih auto migrate</i>
 
 ## Swagger UI
 

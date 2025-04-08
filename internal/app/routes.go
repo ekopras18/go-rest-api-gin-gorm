@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	filesSwagger "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"net/http"
 )
 
 func Routes(r *gin.Engine) {
@@ -16,6 +17,15 @@ func Routes(r *gin.Engine) {
 	r.NoRoute(utils.NotFoundHandler)
 
 	r.GET("/docs/*any", ginSwagger.WrapHandler(filesSwagger.Handler))
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status":  200,
+			"message": "OK, server is running",
+		})
+	})
+	r.GET("/", func(c *gin.Context) {
+		http.Redirect(c.Writer, c.Request, "/docs/index.html", http.StatusFound)
+	})
 
 	// Auth routes
 	routesAuth := r.Group("/auth")

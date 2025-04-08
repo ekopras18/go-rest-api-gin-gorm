@@ -26,7 +26,7 @@ func (r *Repository) IsEmailTaken(email string) bool {
 	return user.ID != 0
 }
 
-func (r *Repository) RegisterUserRepository(username, password string) error {
-	user := models.User{Username: username, Password: password, CreatedAt: time.Now()}
+func (r *Repository) RegisterUserRepository(username, password, email string) error {
+	user := models.User{Username: username, Password: password, Email: email, CreatedAt: time.Now()}
 	return database.Db.Create(&user).Error
 }

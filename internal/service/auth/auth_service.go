@@ -48,5 +48,5 @@ func (s *Service) Register(credential dto.Register) error {
 	if err != nil {
 		return errors.New("error hashing password")
 	}
-	return s.repo.RegisterUserRepository(credential.Username, hashedPassword)
+	return s.repo.RegisterUserRepository(credential.Username, hashedPassword, credential.Email)
 }

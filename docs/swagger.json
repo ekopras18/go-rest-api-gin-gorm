@@ -8,7 +8,7 @@
         "description": "This is a REST API using Gin and Gorm.",
         "title": "REST API with Gin and Gorm",
         "contact": {},
-        "version": "0.1.4"
+        "version": "0.1.5"
     },
     "paths": {
         "/api/v1/user/{id}": {
